@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "3000:80"
+    depends_on:
+      - movies-api
+      - movies-ui
+
+  movies-api:
+    build:
+      context: ./movies-back
+    env_file: .env
+    volumes:
+      - ./movies-back:/app
+    depends_on:
+      - db
+
+  movies-ui:
+    build:
+      context: ./movies-front
+    volumes:
+      - ./movies-front:/app
+
+  db:
+    image: postgres:10.3-alpine
+    env_file: .env
+    volumes:
+      - db-data:/var/lib/postgresql/db-data
+
+volumes:
+  db-data:
