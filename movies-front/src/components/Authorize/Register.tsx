@@ -1,24 +1,20 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 
-export const Register: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
-  };
+interface RegisterProps {
+  onRegisterSubmit: (values: any) => void;
+}
 
+export const Register: React.FC<RegisterProps> = ({ onRegisterSubmit }) => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
 
   return (
-    <Form
-      name="basic"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
+    <Form name="basic" onFinish={onRegisterSubmit} onFinishFailed={onFinishFailed}>
       <Form.Item
         label="Username"
-        name="username"
+        name="login"
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
         <Input />

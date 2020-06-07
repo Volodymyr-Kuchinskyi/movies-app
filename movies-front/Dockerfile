@@ -2,11 +2,11 @@ FROM node:12.10-alpine
 
 WORKDIR /app
 
-COPY package.json ./
-COPY package-lock.json ./
+EXPOSE 3000
 
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+COPY package.json .
+
+RUN npm install && npm cache clean --force
 
 COPY . .
 
