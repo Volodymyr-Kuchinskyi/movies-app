@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon index"
+    "start:dev": "nodemon index",
+    "parser:start": "node ./movies-parser/parse"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
+    "csv-parser": "^2.3.3",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "pg": "^8.2.1",

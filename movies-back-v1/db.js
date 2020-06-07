@@ -1,11 +1,6 @@
 const { Client } = require('pg');
+const { config } = require('./config');
 
-const client = new Client({
-  user: 'movies',
-  database: 'movies',
-  password: '23232323',
-  port: 5432,
-  host: 'db'
-});
+const client = new Client(config.db);
 
 module.exports = { dbClient: client };
